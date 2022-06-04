@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "2a3ab181-6f9c-46a7-a716-392fce12021c",
+		"name": "Kumpulan Doa - Kuis PI",
+		"description": "StartFragment\n\n# **Deskripsi**\n\nIni merupakan API yang digunakan untuk mendapatkan doa-doa islam di dalam kehidupan sehari-hari.\n\n# **Penggunaan**\n\n1.  Ekstrak folder terlebih dahulu\n2.  Buat database dengan nama \"kumpulan_doa\"\n3.  Ekspor file \"kumpulan_doa.sql\" yang berada pada folder database\n4.  Pengujian dengan menggunakan Postman\n    \n\nBase URL : http://localhost/kumpulan_doa/doa/\n\n# Route\n\n## Mengambil seluruh data doa\n\n\\[GET\\] http://localhost/kumpulan_doa/doa\n\n## Mengambil data doa berdasarkan id\n\n\\[GET\\] http://localhost/kumpulan_doa/doa/{id}  \nContoh : \\[GET\\] http://localhost/kumpulan_doa/doa/2\n\n## Mengambil data doa berdasarkan nama Doa\n\n\\[GET\\] http://localhost/kumpulan_doa/doa/{doa}  \nContoh : \\[GET\\] http://localhost/kumpulan_doa/doa/?doa=doa sebelum makan\n\n## Menambahkan data doa baru\n\n*   \\[POST\\] http://localhost/kumpulan_doa/doa/\n*   Ke \"Body\"- Lalu pilih \"x-www-form-urlencoded\"\n*   Isi KEY dan VALUE. Dimana KEY terdiri dari empat parameter, yaitu : 1. doa  2. ayat  3. latin  4. artinya\n*   Send\n    \n\n  \nNote :\n\n*   Apabila penambahan data berhasil, maka akan mucul pesan berupa \"Penambahan Data Doa Berhasil\".\n*   Apabila penambahan data gagal, maka akan mucul pesan berupa \"Penambahan Data Doa Gagal\".\n*   Apabila terdapat pesan error berupa \"Parameter Tidak Cocok\", berarti terdapat parameter yang tidak sesuai dengan parameter yang telah ditentunkan dalam API ini. Maka periksa kembali parameter yang dimasukkan.\n    \n\n## Mengubah data pada doa (berdasarkan id)\n\n\\[POST\\] http://localhost/kumpulan_doa/doa/{id}\n\n  \nContoh :\n\n*   \\[POST\\] http://localhost/kumpulan_doa/doa/2\n*   Ke \"Body\"- Lalu pilih \"x-www-form-urlencoded\"\n*   Isi VALUE yang ingin diubah dari KEY yang tersedia. Dimana KEY terdiri dari empat parameter, yaitu :  1. doa  2. ayat  3. latin  4. artinya\n*   Send\n    \n\n  \nNote :\n\n*   Apabila pengubahan data berhasil, maka akan mucul pesan berupa \"Pengubahan Data Doa Berhasil\".\n*   Apabila pengubahan data gagal, maka akan mucul pesan berupa \"Pengubahan Data Doa Gagal\".\n*   Apabila terdapat pesan error berupa \"Parameter Tidak Cocok\", berarti terdapat parameter yang tidak sesuai dengan parameter yang telah ditentunkan dalam API ini. Maka periksa kembali parameter yang dimasukkan.\n    \n\n## Menghapus data doa (berdasarkan id)\n\n\\[DELETE\\] http://localhost/kumpulan_doa/doa/{id}\n\n  \nContoh :\n\n\\[DELETE\\] http://localhost/kumpulan_doa/doa/2  \n\nNote :\n\n*   Apabila penghapusan data berhasil, maka akan mucul pesan berupa \"Penghapusan Data Doa Berhasil\".\n*   Apabila penghapusan data gagal, maka akan mucul pesan berupa \"Penghapusan Data Doa Gagal\".\n    \n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11785527"
+	},
+	"item": [
+		{
+			"name": "GET - Seluruh Doa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/kumpulan_doa/doa/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"kumpulan_doa",
+						"doa",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Doa berdasarkan id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/kumpulan_doa/doa/34",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"kumpulan_doa",
+						"doa",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Doa berdasarkan nama Doa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/kumpulan_doa/doa/?doa=doa ketika bersedih",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"kumpulan_doa",
+						"doa",
+						""
+					],
+					"query": [
+						{
+							"key": "doa",
+							"value": "doa ketika bersedih"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST - Penambahan Doa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "doa",
+							"value": "Doa ketika bersedih",
+							"type": "text"
+						},
+						{
+							"key": "ayat",
+							"value": "وَلَا تَهِنُوْا وَلَا تَحْزَنُوْا وَاَنْتُمُ الْاَعْلَوْنَ اِنْ كُنْتُمْ مُّؤْمِنِيْ",
+							"type": "text"
+						},
+						{
+							"key": "latin",
+							"value": "Wala tahinuu walaa tahzanuu waantumul alauna ingkuntum mu miniin",
+							"type": "text"
+						},
+						{
+							"key": "artinya",
+							"value": "Dan jangan putus asa, jangan sedih. Kamu pasti akan menang jika kamu adalah orang-orang yang benar-benar beriman.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/kumpulan_doa/doa/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"kumpulan_doa",
+						"doa",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Pengubahan Doa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "doa",
+							"value": "Doa ketika bersedih",
+							"type": "text"
+						},
+						{
+							"key": "ayat",
+							"value": "وَلَا تَهِنُوْا وَلَا تَحْزَنُوْا وَاَنْتُمُ الْاَعْلَوْنَ اِنْ كُنْتُمْ مُّؤْمِنِيْ",
+							"type": "text"
+						},
+						{
+							"key": "latin",
+							"value": "Wala tahinuu walaa tahzanuu waantumul alauna ingkuntum mu miniin",
+							"type": "text"
+						},
+						{
+							"key": "artinya",
+							"value": "Dan jangan putus asa, jangan sedih. Kamu pasti akan menang jika kamu adalah orang-orang yang benar-benar beriman.",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/kumpulan_doa/doa/38",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"kumpulan_doa",
+						"doa",
+						"38"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hapus Doa berdasarkan id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/kumpulan_doa/doa/38",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"kumpulan_doa",
+						"doa",
+						"38"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH - Pengubahan Data Doa",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

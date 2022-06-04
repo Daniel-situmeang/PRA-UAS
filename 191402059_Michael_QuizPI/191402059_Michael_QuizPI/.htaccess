@@ -1,0 +1,4 @@
+RewriteEngine On # Turn on the rewriting RewriteEngine
+RewriteRule ^informasi/?$ request.php [NC,L]
+RewriteRule ^informasi/NIK=([0-9]+)/?$ request.php?NIK=$1 [NC,L]
+RewriteRule ^informasi/nomor_telepon=([0-9]+)/?$ request.php?nomor_telepon=$1 [NC,L]

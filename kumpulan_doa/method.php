@@ -1,7 +1,7 @@
 <?php
 	require_once "connect.php";
 
-	class Doa{
+	class Method{
 		public function get_list_doa(){
 			global $mysqli;
 			$query	= "SELECT * FROM tabel_doa";
@@ -175,24 +175,21 @@
 			echo json_encode($response);
 		}
 
-		public function patch_doa($id) {
+		public function patch_doa($id,$isidoa,$ayat,$latin,$artinya) {
 			global $mysqli;
-			$arrcheckpost = array('doa' => '', 'ayat' => '', 'latin' => '', 'artinya' => '');
-			$hitung	      = count(array_intersect_key($_POST, $arrcheckpost));
-
-			if($hitung == count($arrcheckpost)) {
 				$result	= mysqli_query($mysqli, "UPDATE tabel_doa SET
-					doa 		  = '$_POST[doa]',
-					ayat 		  = '$_POST[ayat]',
-					latin 	  = '$_POST[latin]',
-					artinya   = '$_POST[artinya]'
+					doa 		  = '$isidoa',
+					ayat 		  = '$ayat',
+					latin 	  = '$latin',
+					artinya   = '$artinya'
 					WHERE id  = '$id'
 				");
 
 				if($result) {
 					$response = array(
 						'status' => 200,
-						'message'=> 'Pengubahan Data Doa Berhasil.'
+						'message'=> 'Pengubahan Data Doa Berhasil.',
+						'doa' => $id,
 					);
 				}
 				else {
@@ -201,13 +198,6 @@
 						'message'=> 'Pengubahan Data Doa Gagal.'
 					);
 				}
-			}
-			else {
-				$response=array(
-					'status' => 400,
-					'message'=> 'Parameter Tidak Cocok.'
-				);
-			}
 
 			header('Content-Type: application/json');
 			echo json_encode($response);

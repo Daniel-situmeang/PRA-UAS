@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "1812c2ec-c023-4487-8d56-db6077a2f9c9",
+		"name": "NIK - No Telp penduduk API",
+		"description": "Michael 191402059\n\nNIK - No Telp penduduk API dibangun untuk mengintegrasikan data masyarakat Indonesia dengan aplikasi pengguna lainnya. API ini berfungsi untuk menampilkan data NIK dan data Nomor telepon yang terhubungan dengan nomor itu sehingga pengguna dapat mengetahui NIK pemiliki nomor telepon dan sebaliknya juga dapat mengetahui nomor telp dari pemiliki NIK. Selain itu, fitur API ini dapat berfungsi untuk menambahkankan atau memperbarui atau menghapus data penduduk ke dalam server.\n\nFitur API ini terdiri atas:\n\n1.  Memasukkan data NIK - No Telp penduduk, melalui perintah POST .../informasi dan dilengkapi dengan body NIK dan nomor_telepon\n2.  Mengambil semua data NIK - No Telp penduduk, melalui perintah GET .../informasi\n3.  Mengambil data penduduk berdasarkan input NIK, melalui perintah GET .../informasi?NIK={NIK}\n4.  Mengambil data penduduk berdasarkan input nomor_telepon, melalui perintah GET .../informasi?nomor_telepon={nomor_telepon}\n5.  Mengubah data nomor_telepon penduduk berdasarkan input nomor_telepon lama, melalui perintah PUT .../informasi?nomor_telepon={nomor_telepon} dan dilengkapi dengan body nomor_telepon_baru dan NIK_baru\n6.  Mengubah data penduduk, melalui perintah PUT .../informasi dan dilengkapi dengan body nomor_telepon_lama, nomor_telepon_baru, NIK_lama, NIK_baru\n7.  Mengubah NIK penduduk berdasarkan input nomor_telepon lama, melalui perintah PATCH .../informasi?nomor_telepon={nomor_telepon} dan dilengkapi dengan body NIK_baru\n8.  Menghapus data penduduk berdasarkan input nomor_telepon, melalui perintah DELETE .../informasi?nomor_telepon={nomor_telepon}",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20090008"
+	},
+	"item": [
+		{
+			"name": "Post Informasi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nomor_telepon",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "NIK",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi"
+					]
+				},
+				"description": "POST .../informasi\n\nfungsi yang mengizinkan peng-inputan data pengguna nomor_telepon dan NIK\n\nParameter body yang digunakan: ***nomor_telepon*** dan ***NIK***\n\n**Contoh :**\n\nPOST .../informasi : memasukkan informasi data ke database\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Informasi Added Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Failed to add informasi\" dengan Kode Respon HTTP 400. Jika data nomor_telepon sudah di maka akan menampilkan \"Nomor telepon sudah digunakan\" dengan Kode Respon HTTP 422. Dan jika parameter yang dimasukkan tidak sesuai maka akan menampilkan pesan \"PARAMETER MISSING\" dengan kode respon HTTP 400."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Informasi dengan No Telp",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi?nomor_telepon=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi"
+					],
+					"query": [
+						{
+							"key": "nomor_telepon",
+							"value": "1"
+						}
+					]
+				},
+				"description": "GET .../informasi?nomor_telepon={nomor_telepon}\n\nfungsi yang mengizinkan pengambilan data pengguna nomor_telepon dan NIK berdasarkan nomor_telepon\n\nParameter body yang digunakan: -\n\n**Contoh :**\n\nGET .../informasi?nomor_telepon=06123456789 : mengambil informasi data dari database dengan nomor_telepon 06123456789\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Get List Informasi Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Get list informasi failed\" dengan Kode Respon HTTP 400."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Informasi dengan NIK",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi?NIK=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi"
+					],
+					"query": [
+						{
+							"key": "NIK",
+							"value": "2"
+						}
+					]
+				},
+				"description": "GET .../informasi?NIK={NIK}\n\nfungsi yang mengizinkan pengambilan data pengguna nomor_telepon dan NIK berdasarkan NIK\n\nParameter body yang digunakan: -\n\n**Contoh :**\n\nGET .../informasi?NIK=1234567890 : mengambil informasi data dari database dengan NIK 1234567890\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Get List Informasi Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Get list informasi failed\" dengan Kode Respon HTTP 400."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Semua Informasi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi"
+					]
+				},
+				"description": "GET .../informasi\n\nfungsi yang mengizinkan pengambilan semua data pengguna nomor_telepon dan NIK\n\nParameter body yang digunakan: -\n\n**Contoh :**\n\nGET .../informasi : mengambil semua informasi data dari database\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Get List Informasi Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Get list informasi failed\" dengan Kode Respon HTTP 400."
+			},
+			"response": []
+		},
+		{
+			"name": "Put Informasi dengan No Telp",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nomor_telepon_baru",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "NIK_baru",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi?nomor_telepon=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi"
+					],
+					"query": [
+						{
+							"key": "nomor_telepon",
+							"value": "1"
+						}
+					]
+				},
+				"description": "PUT .../informasi?nomor_telepon={nomor_telepon}\n\nfungsi yang mengizinkan perubahan data pengguna nomor_telepon_baru dan NIK_baru berdasarkan nomor_telepon lama\n\nParameter body yang digunakan: **nomor_telepon_baru** dan **NIK_baru**\n\n**Contoh :**\n\nPUT .../informasi?nomor_telepon=06123456789 : dilengkapi dengan body **nomor_telepon_baru** dan **NIK_baru** akan melakukan perubahan pada data dengan nomor_telepon 06123456789 dan mengganti datanya menjadi **nomor_telepon_baru** dan **NIK_baru**\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Informasi Updated Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Failed to Update informasi\" dengan Kode Respon HTTP 400. Jika data nomor_telepon_baru sudah di maka akan menampilkan \"Nomor telepon baru telah digunakan\" dengan Kode Respon HTTP 422. Jika nomor_telepon lama yang dimasukkan tidak ditemukan di database maka akan menampilkan \"Nomor Telepon tidak ditemukan\" dengan kode respon HTTP 404. Dan jika parameter yang dimasukkan tidak sesuai maka akan menampilkan pesan \"PARAMETER MISSING\" dengan kode respon HTTP 400."
+			},
+			"response": []
+		},
+		{
+			"name": "Put Informasi Full",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nomor_telepon_lama",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "nomor_telepon_baru",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "NIK_lama",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "NIK_baru",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi"
+					]
+				},
+				"description": "PUT .../informasi\n\nfungsi yang mengizinkan perubahan data pengguna nomor_telepon_baru dan NIK_baru berdasarkan nomor_telepon_lama dan NIK_lama\n\nParameter body yang digunakan: **nomor_telepon_baru, NIK_baru, nomor_telepon_lama, NIK_lama**\n\n**Contoh :**\n\nPUT .../informasi : dilengkapi dengan body **nomor_telepon_baru,** **NIK_baru, nomor_telepon_lama, NIK_lama** akan melakukan perubahan pada data dengan **nomor_telepon_lama** dan **NIK_lama** kemudian mengganti datanya menjadi **nomor_telepon_baru** dan **NIK_baru**\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Informasi Updated Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Failed to Update informasi\" dengan Kode Respon HTTP 400. Jika data nomor_telepon_baru sudah di maka akan menampilkan \"Nomor telepon baru telah digunakan\" dengan Kode Respon HTTP 422. Jika nomor_telepon lama yang dimasukkan tidak ditemukan di database maka akan menampilkan \"Nomor Telepon tidak ditemukan\" dengan kode respon HTTP 404. Dan jika parameter yang dimasukkan tidak sesuai maka akan menampilkan pesan \"PARAMETER MISSING\" dengan kode respon HTTP 400."
+			},
+			"response": []
+		},
+		{
+			"name": "Patch Informasi dengan No Telp",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "NIK_baru",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi/nomor_telepon=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi",
+						"nomor_telepon=3"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "StartFragment\n\nPATCH .../informasi?nomor_telepon={nomor_telepon}\n\nfungsi yang mengizinkan perubahan sebagian data pengguna yakni hanya NIK_baru berdasarkan nomor_telepon_lama\n\nParameter body yang digunakan: **NIK_baru**\n\n**Contoh :**\n\nPATCH .../informasi?nomor_telepon=06123456789 : dilengkapi dengan body **NIK_baru** akan melakukan perubahan pada data dengan **nomor_telepon_lama** kemudian mengganti data NIK nya menjadi **NIK_baru**\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Informasi Updated Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Failed to Update informasi\" dengan Kode Respon HTTP 400. Jika nomor_telepon lama yang dimasukkan tidak ditemukan di database maka akan menampilkan \"Nomor Telepon tidak ditemukan\" dengan kode respon HTTP 404. Dan jika parameter yang dimasukkan tidak sesuai maka akan menampilkan pesan \"PARAMETER MISSING\" dengan kode respon HTTP 400.\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Informasi dengan No Telp",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost/191402059_Michael_QuizPI/informasi/nomor_telepon=3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"191402059_Michael_QuizPI",
+						"informasi",
+						"nomor_telepon=3"
+					]
+				},
+				"description": "DELETE .../informasi?nomor_telepon={nomor_telepon}\n\nfungsi yang mengizinkan penghapusan data pengguna berdasarkan nomor_telepon\n\nParameter body yang digunakan: -\n\n**Contoh :**\n\nDELETE .../informasi?nomor_telepon=06123456789 : akan melakukan penghapusan pada data dengan **nomor_telepon** \\= 06123456789\n\n**Respon :**\n\nJika metode HTTP ini berhasil maka akan menampilkan pesan \"Informasi Deleted Successfully\" dengan Kode Respon HTTP 200 OK. Jika metode ini gagal maka akan menampilkan pesan \"Failed to Update informasi\" dengan Kode Respon HTTP 400. Jika nomor_telepon yang dimasukkan tidak ditemukan di database maka akan menampilkan \"Nomor Telepon tidak ditemukan\" dengan kode respon HTTP 404."
+			},
+			"response": []
+		}
+	]
+}
