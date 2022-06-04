@@ -1,0 +1,3 @@
+RewriteEngine On # Turn on the rewriting RewriteEngine
+RewriteRule ^aktoraktris/?$ aktoraktris.php [NC,L]
+RewriteRule ^aktoraktris/([0-9]+)/?$ aktoraktris.php?id=$1[NC,L]
