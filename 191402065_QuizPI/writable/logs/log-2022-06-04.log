@@ -1,0 +1,35 @@
+CRITICAL - 2022-06-04 09:05:05 --> Undefined variable $divisi
+in APPPATH\Controllers\Himatif.php on line 30.
+ 1 APPPATH\Controllers\Himatif.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $divisi', 'APPPATH\\Controllers\\Himatif.php', 30)
+ 2 SYSTEMPATH\CodeIgniter.php(898): App\Controllers\Himatif->create()
+ 3 SYSTEMPATH\CodeIgniter.php(468): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Himatif))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-04 09:05:31 --> Undefined variable $Himatif
+in APPPATH\Controllers\Himatif.php on line 30.
+ 1 APPPATH\Controllers\Himatif.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Himatif', 'APPPATH\\Controllers\\Himatif.php', 30)
+ 2 SYSTEMPATH\CodeIgniter.php(898): App\Controllers\Himatif->create()
+ 3 SYSTEMPATH\CodeIgniter.php(468): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Himatif))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-04 09:14:10 --> syntax error, unexpected variable "$query"
+in APPPATH\Controllers\Himatif.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(261): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\Himatif.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(239): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Himatif')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Himatif')
+ 4 SYSTEMPATH\CodeIgniter.php(848): class_exists('\\App\\Controllers\\Himatif', true)
+ 5 SYSTEMPATH\CodeIgniter.php(455): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-04 09:18:04 --> Call to undefined method App\Controllers\Himatif::getPost()
+in APPPATH\Controllers\Himatif.php on line 22.
+ 1 SYSTEMPATH\CodeIgniter.php(898): App\Controllers\Himatif->create()
+ 2 SYSTEMPATH\CodeIgniter.php(468): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Himatif))
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-06-04 09:19:12 --> Call to undefined method App\Controllers\Himatif::getVar()
+in APPPATH\Controllers\Himatif.php on line 22.
+ 1 SYSTEMPATH\CodeIgniter.php(898): App\Controllers\Himatif->create()
+ 2 SYSTEMPATH\CodeIgniter.php(468): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Himatif))
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(55): CodeIgniter\CodeIgniter->run()
