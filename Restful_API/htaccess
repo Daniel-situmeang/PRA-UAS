@@ -1,0 +1,3 @@
+RewriteEngine On # Turn on the rewriting RewriteEngine
+RewriteRule ^minimarket/?$ minimarket.php [NC,L]
+RewriteRule ^minimarket/([0-9]+)/?$ minimarket.php?id=$1[NC,L]
