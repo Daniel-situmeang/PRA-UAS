@@ -1,5 +1,4 @@
-<!-- koneksi.php untuk setting db -->
-
+<!-- untuk menghubungkan ke database -->
 <?php
 $host = "localhost";
 $user = "root";

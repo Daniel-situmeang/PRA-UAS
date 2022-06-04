@@ -2,7 +2,78 @@
     
     <?php
 
-    require_once('koneksi.php');
+    require_once('connection.php');
+
+    class Metode{
+        // untuk menampilkan data
+        public function get_akt()
+        {
+            global $mysqli;
+            $query = $mysqli->query("SELECT * FROM biodata");
+            $data = array();
+            $result = $mysqli->query($query);
+            while($row = $result->fetch_assoc())
+            {
+                $data[] = $row;
+            }
+
+            $response = array(
+                'status' => 200,
+                'message' => 'Data berhasil diambil',
+                'data' => $data
+            );
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+
+        // untuk menampilkan data berdasarkan id
+        public function get_akt_id($id)
+        {
+            global $mysqli;
+            $query = $mysqli->query("SELECT * FROM biodata WHERE id = '$id'");
+            $data = array();
+            $result = $mysqli->query($query);
+            while($row = $result->fetch_assoc())
+            {
+                $data[] = $row;
+            }
+
+            $response = array(
+                'status' => 200,
+                'message' => 'Data berhasil diambil',
+                'data' => $data
+            );
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+
+        // untuk menambahkan data
+        public function add_akt($nama, $alamat, $umur, $jenis_kelamin, $tanggal_lahir, $tanggal_mulai_bekerja, $tanggal_selesai_bekerja, $gaji, $foto)
+        {
+            global $mysqli;
+            $query = $mysqli->query("INSERT INTO biodata (nama, alamat, umur, jenis_kelamin, tanggal_lahir, tanggal_mulai_bekerja, tanggal_selesai_bekerja, gaji, foto) VALUES ('$nama', '$alamat', '$umur', '$jenis_kelamin', '$tanggal_lahir', '$tanggal_mulai_bekerja', '$tanggal_selesai_bekerja', '$gaji', '$foto')");
+
+            if($query)
+            {
+                $response = array(
+                    'status' => 200,
+                    'message' => 'Data berhasil ditambahkan'
+                );
+            }
+            else
+            {
+                $response = array(
+                    'status' => 400,
+                    'message' => 'Data gagal ditambahkan'
+                );
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
+    }
 
     class Method {
         public function get_mhss(){
