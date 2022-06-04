@@ -50,10 +50,10 @@
         }
 
         // untuk menambahkan data
-        public function add_akt($nama, $alamat, $umur, $jenis_kelamin, $tanggal_lahir, $tanggal_mulai_bekerja, $tanggal_selesai_bekerja, $gaji, $foto)
+        public function add_akt($nama_panggung, $nama, $tempat_lahir, $tanggal_lahir, $tanggal_lahir, $tahun_aktif, $jenis_kelamin)
         {
             global $mysqli;
-            $query = $mysqli->query("INSERT INTO biodata (nama, alamat, umur, jenis_kelamin, tanggal_lahir, tanggal_mulai_bekerja, tanggal_selesai_bekerja, gaji, foto) VALUES ('$nama', '$alamat', '$umur', '$jenis_kelamin', '$tanggal_lahir', '$tanggal_mulai_bekerja', '$tanggal_selesai_bekerja', '$gaji', '$foto')");
+            $query = $mysqli->query("INSERT INTO biodata (nama_panggung, nama, tempat_lahir, tanggal_lahir, tanggal_lahir, tahun_aktif, jenis_kelamin) VALUES ('$nama_panggung', '$nama', '$tempat_lahir', '$tanggal_lahir', '$tanggal_lahir', '$tahun_aktif', '$jenis_kelamin')");
 
             if($query)
             {
@@ -73,145 +73,25 @@
             header('Content-Type: application/json');
             echo json_encode($response);
         }
-    }
 
-    class Method {
-        public function get_mhss(){
+        // untuk mengubah data
+        public function edit_akt($id, $nama_panggung, $nama, $tempat_lahir, $tanggal_lahir, $tanggal_lahir, $tahun_aktif, $jenis_kelamin)
+        {
             global $mysqli;
-            $query = "SELECT * FROM tbl_mahasiswa";
-            $data = array();
-            $result = $mysqli->query($query);
+            $query = $mysqli->query("UPDATE biodata SET nama_panggung = '$nama_panggung', nama = '$nama', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir', tanggal_lahir = '$tanggal_lahir', tahun_aktif = '$tahun_aktif', jenis_kelamin = '$jenis_kelamin' WHERE id = '$id'");
 
-            while($row = $result->fetch_assoc()){
-                $data[] = $row;
-            }
-
-            $response = array(
-                'status' => 200,
-                'message' => 'Get List Mahasiswa Successfully',
-                'data' => $data
-            );
-
-            header('Content-Type: application/json');
-            echo json_encode($response);
-        }
-
-        public function get_mhs($id){
-            global $mysqli;
-            $query = "SELECT * FROM tbl_mahasiswa WHERE id = ".$id." LIMIT 1 ";
-            $data = array();
-            $result = $mysqli->query($query);
-
-            while($row = $result->fetch_assoc()){
-                $data[] = $row;
-            }
-
-            $response = array(
-                'status' => 200,
-                'message' => 'Get List Mahasiswa Successfully',
-                'data' => $data
-            );
-
-            header('Content-Type: application/json');
-            echo json_encode($response);
-        }
-
-        public function insert_mhs(){
-            global $mysqli;
-            $arrcheckpost = array(
-                'nim' => '',
-                'nama' => '',
-                'jk' => '',
-                'alamat' => '',
-                'jurusan' => ''
-            );
-
-            $hitung = count(array_intersect_key($_POST, $arrcheckpost));
-
-            if($hitung == count($arrcheckpost)){
-                $result = $mysqli->query("INSERT INTO tbl_mahasiswa (nim, nama, jk, alamat, jurusan) VALUES ('".$_POST['nim']."', '".$_POST['nama']."','".$_POST['jk']."', '".$_POST['alamat']."', '".$_POST['jurusan']."')");
-
-                if($result){
-                    $response =array(
-                        'status' => 200,
-                        'message' => 'Mahasiswa Added Successfully'
-                    );
-                }
-    
-                else{
-                    $response =array(
-                        'status' => 400,
-                        'message' => 'Failed to Add Mahasiswa'
-                    );
-                }
-            }
-
-            else{
-                $response =array(
-                    'status' => 400,
-                    'message' => 'PARAMETER MISSING'
-                );
-            }
-
-            header('Content-Type: application/json');
-            echo json_encode($response);
-            
-        }
-
-        public function update_mhs($id){
-            global $mysqli;
-            $arrcheckpost = array(
-                'nim' => '',
-                'jk' => '',
-                'alamat' => '',
-                'jurusan' => ''
-            );
-
-            $hitung = count(array_intersect_key($_POST, $arrcheckpost));
-
-            if($hitung == count($arrcheckpost)){
-                $result = $mysqli->query("UPDATE tbl_mahasiswa SET nim = '".$_POST['nim']."', jk = '".$_POST['jk']."', alamat = '".$_POST['alamat']."', jurusan = '".$_POST['jurusan']."' WHERE id = ".$id);
-
-                if($result){
-                    $response =array(
-                        'status' => 200,
-                        'message' => 'Mahasiswa Updated Successfully'
-                    );
-                }
-    
-                else{
-                    $response =array(
-                        'status' => 400,
-                        'message' => 'Failed to Update Mahasiswa'
-                    );
-                }
-            }
-
-            else{
-                $response =array(
-                    'status' => 400,
-                    'message' => 'PARAMETER MISSING'
-                );
-            }
-
-            header('Content-Type: application/json');
-            echo json_encode($response);
-        }
-
-        public function delete_mhs($id){
-            global $mysqli;
-            $query = "DELETE FROM tbl_mahasiswa WHERE id = ".$id;
-            if($mysqli->query($query)){
+            if($query)
+            {
                 $response = array(
                     'status' => 200,
-                    'message' => 'Mahasiswa Deleted Successfully'
+                    'message' => 'Data berhasil diubah'
                 );
             }
-
-            else{
+            else
+            {
                 $response = array(
                     'status' => 400,
-                    'message' => 'Failed to Delete Mahasiswa'
+                    'message' => 'Data gagal diubah'
                 );
             }
 
@@ -219,36 +99,54 @@
             echo json_encode($response);
         }
 
-        public function patch_mhs($id){
+        // untuk menghapus data
+        public function delete_akt($id)
+        {
             global $mysqli;
-            $arrcheckpost = array(
-                'jurusan' => ''
-            );
+            $query = $mysqli->query("DELETE FROM biodata WHERE id = '$id'");
 
-            $hitung = count(array_intersect_key($_POST, $arrcheckpost));
-
-                $result = $mysqli->query("UPDATE tbl_mahasiswa SET jurusan = '".$_POST['jurusan']."' WHERE id = ".$id);
-
-                if($result){
-                    $response =array(
-                        'status' => 200,
-                        'message' => 'Mahasiswa Updated Successfully'
-                    );
-                }
-    
-                else{
-                    $response =array(
-                        'status' => 400,
-                        'message' => 'Failed to Update Mahasiswa'
-                    );
-                }
+            if($query)
+            {
+                $response = array(
+                    'status' => 200,
+                    'message' => 'Data berhasil dihapus'
+                );
+            }
+            else
+            {
+                $response = array(
+                    'status' => 400,
+                    'message' => 'Data gagal dihapus'
+                );
+            }
 
             header('Content-Type: application/json');
             echo json_encode($response);
-
         }
 
-        
+        public function patch_akt($id, $nama_panggung, $nama, $tempat_lahir, $tanggal_lahir, $tanggal_lahir, $tahun_aktif, $jenis_kelamin)
+        {
+            global $mysqli;
+            $query = $mysqli->query("UPDATE biodata SET nama_panggung = '$nama_panggung', nama = '$nama', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir', tanggal_lahir = '$tanggal_lahir', tahun_aktif = '$tahun_aktif', jenis_kelamin = '$jenis_kelamin' WHERE id = '$id'");
+
+            if($query)
+            {
+                $response = array(
+                    'status' => 200,
+                    'message' => 'Data berhasil diubah'
+                );
+            }
+            else
+            {
+                $response = array(
+                    'status' => 400,
+                    'message' => 'Data gagal diubah'
+                );
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($response);
+        }
     }
 
     ?>
